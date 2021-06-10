@@ -5,6 +5,9 @@
  */
 package yundry;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -16,6 +19,7 @@ public class BerandaForm extends javax.swing.JFrame {
      */
     public BerandaForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,19 +36,19 @@ public class BerandaForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        pberanda = new javax.swing.JPanel();
+        txtberanda = new javax.swing.JLabel();
+        pkaryawan = new javax.swing.JPanel();
+        txtkaryawan = new javax.swing.JLabel();
+        ppelanggan = new javax.swing.JPanel();
+        txtpelanggan = new javax.swing.JLabel();
+        ppendataan = new javax.swing.JPanel();
+        txtpendataan = new javax.swing.JLabel();
+        ppembayaran = new javax.swing.JPanel();
+        txtpembayaran = new javax.swing.JLabel();
+        ppengambilan = new javax.swing.JPanel();
+        txtpengambilan = new javax.swing.JLabel();
+        btnlogout = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -59,150 +63,210 @@ public class BerandaForm extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yundry/Logo1.png"))); // NOI18N
 
-        jPanel3.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel3.setPreferredSize(new java.awt.Dimension(248, 69));
+        pberanda.setBackground(new java.awt.Color(215, 206, 156));
+        pberanda.setPreferredSize(new java.awt.Dimension(248, 69));
+        pberanda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pberandaMouseClicked(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel2.setText("BERANDA");
+        txtberanda.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtberanda.setText("BERANDA");
+        txtberanda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtberandaMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pberandaLayout = new javax.swing.GroupLayout(pberanda);
+        pberanda.setLayout(pberandaLayout);
+        pberandaLayout.setHorizontalGroup(
+            pberandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pberandaLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel2)
+                .addComponent(txtberanda)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        pberandaLayout.setVerticalGroup(
+            pberandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pberandaLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(txtberanda)
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel4.setPreferredSize(new java.awt.Dimension(248, 69));
+        pkaryawan.setBackground(new java.awt.Color(215, 206, 156));
+        pkaryawan.setPreferredSize(new java.awt.Dimension(248, 69));
+        pkaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pkaryawanMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel3.setText("KARYAWAN");
+        txtkaryawan.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtkaryawan.setText("KARYAWAN");
+        txtkaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtkaryawanMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pkaryawanLayout = new javax.swing.GroupLayout(pkaryawan);
+        pkaryawan.setLayout(pkaryawanLayout);
+        pkaryawanLayout.setHorizontalGroup(
+            pkaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pkaryawanLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel3)
+                .addComponent(txtkaryawan)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        pkaryawanLayout.setVerticalGroup(
+            pkaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pkaryawanLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(txtkaryawan)
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel5.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppelanggan.setBackground(new java.awt.Color(215, 206, 156));
+        ppelanggan.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ppelangganMouseClicked(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel4.setText("PELANGGAN");
+        txtpelanggan.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtpelanggan.setText("PELANGGAN");
+        txtpelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtpelangganMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout ppelangganLayout = new javax.swing.GroupLayout(ppelanggan);
+        ppelanggan.setLayout(ppelangganLayout);
+        ppelangganLayout.setHorizontalGroup(
+            ppelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppelangganLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel4)
+                .addComponent(txtpelanggan)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        ppelangganLayout.setVerticalGroup(
+            ppelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ppelangganLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(txtpelanggan)
                 .addContainerGap())
         );
 
-        jPanel6.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel6.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppendataan.setBackground(new java.awt.Color(215, 206, 156));
+        ppendataan.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppendataan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ppendataanMouseClicked(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel5.setText("PENDATAAN");
+        txtpendataan.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtpendataan.setText("PENDATAAN");
+        txtpendataan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtpendataanMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout ppendataanLayout = new javax.swing.GroupLayout(ppendataan);
+        ppendataan.setLayout(ppendataanLayout);
+        ppendataanLayout.setHorizontalGroup(
+            ppendataanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppendataanLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel5)
+                .addComponent(txtpendataan)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        ppendataanLayout.setVerticalGroup(
+            ppendataanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ppendataanLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(txtpendataan)
                 .addContainerGap())
         );
 
-        jPanel7.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel7.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppembayaran.setBackground(new java.awt.Color(215, 206, 156));
+        ppembayaran.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ppembayaranMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel6.setText("PEMBAYARAN");
+        txtpembayaran.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtpembayaran.setText("PEMBAYARAN");
+        txtpembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtpembayaranMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout ppembayaranLayout = new javax.swing.GroupLayout(ppembayaran);
+        ppembayaran.setLayout(ppembayaranLayout);
+        ppembayaranLayout.setHorizontalGroup(
+            ppembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppembayaranLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel6)
+                .addComponent(txtpembayaran)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        ppembayaranLayout.setVerticalGroup(
+            ppembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ppembayaranLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(txtpembayaran)
                 .addContainerGap())
         );
 
-        jPanel8.setBackground(new java.awt.Color(215, 206, 156));
-        jPanel8.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppengambilan.setBackground(new java.awt.Color(215, 206, 156));
+        ppengambilan.setPreferredSize(new java.awt.Dimension(248, 69));
+        ppengambilan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ppengambilanMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
-        jLabel7.setText("PENGAMBILAN");
+        txtpengambilan.setFont(new java.awt.Font("Charlemagne Std", 0, 26)); // NOI18N
+        txtpengambilan.setText("PENGAMBILAN");
+        txtpengambilan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtpengambilanMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout ppengambilanLayout = new javax.swing.GroupLayout(ppengambilan);
+        ppengambilan.setLayout(ppengambilanLayout);
+        ppengambilanLayout.setHorizontalGroup(
+            ppengambilanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppengambilanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(txtpengambilan)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        ppengambilanLayout.setVerticalGroup(
+            ppengambilanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ppengambilanLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(txtpengambilan)
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(181, 156, 24));
-        jButton1.setText("LOGOUT");
-        jButton1.setPreferredSize(new java.awt.Dimension(137, 38));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnlogout.setBackground(new java.awt.Color(181, 156, 24));
+        btnlogout.setText("LOGOUT");
+        btnlogout.setPreferredSize(new java.awt.Dimension(137, 38));
+        btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnlogoutActionPerformed(evt);
             }
         });
 
@@ -212,12 +276,12 @@ public class BerandaForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pberanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pkaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ppelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ppendataan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ppembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ppengambilan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +290,7 @@ public class BerandaForm extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnlogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -235,19 +299,19 @@ public class BerandaForm extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pberanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pkaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ppelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ppendataan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ppembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ppengambilan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnlogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -257,7 +321,7 @@ public class BerandaForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1192, Short.MAX_VALUE))
+                .addContainerGap(1192, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,9 +344,139 @@ public class BerandaForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtberandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtberandaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        BerandaForm rgf = new BerandaForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtberandaMouseClicked
+
+    private void pberandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pberandaMouseClicked
+        // TODO add your handling code here:
+        BerandaForm rgf = new BerandaForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pberandaMouseClicked
+
+    private void txtkaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtkaryawanMouseClicked
+        // TODO add your handling code here:
+        KaryawanForm rgf = new KaryawanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtkaryawanMouseClicked
+
+    private void pkaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pkaryawanMouseClicked
+        // TODO add your handling code here:
+        KaryawanForm rgf = new KaryawanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pkaryawanMouseClicked
+
+    private void txtpelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpelangganMouseClicked
+        // TODO add your handling code here:
+        PelangganForm rgf = new PelangganForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtpelangganMouseClicked
+
+    private void ppelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ppelangganMouseClicked
+        // TODO add your handling code here:
+        PelangganForm rgf = new PelangganForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_ppelangganMouseClicked
+
+    private void txtpendataanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpendataanMouseClicked
+        // TODO add your handling code here:
+        PendataanForm rgf = new PendataanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtpendataanMouseClicked
+
+    private void ppendataanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ppendataanMouseClicked
+        // TODO add your handling code here:
+        PendataanForm rgf = new PendataanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_ppendataanMouseClicked
+
+    private void txtpembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpembayaranMouseClicked
+        // TODO add your handling code here:
+        PembayaranForm rgf = new PembayaranForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtpembayaranMouseClicked
+
+    private void ppembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ppembayaranMouseClicked
+        // TODO add your handling code here:
+        PembayaranForm rgf = new PembayaranForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_ppembayaranMouseClicked
+
+    private void txtpengambilanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpengambilanMouseClicked
+        // TODO add your handling code here:
+        PengambilanForm rgf = new PengambilanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_txtpengambilanMouseClicked
+
+    private void ppengambilanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ppengambilanMouseClicked
+        // TODO add your handling code here:
+        PengambilanForm rgf = new PengambilanForm();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_ppengambilanMouseClicked
+
+    private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
+        // TODO add your handling code here:
+        int jawab = JOptionPane.showOptionDialog(this, 
+                    "Ingin Keluar?", 
+                    "Keluar", 
+                    JOptionPane.YES_NO_OPTION, 
+                    JOptionPane.QUESTION_MESSAGE, null, null, null);
+    
+        if(jawab == JOptionPane.YES_OPTION){
+        JOptionPane.showMessageDialog(this, "Program Akan Keluar");
+        System.exit(0);
+        }
+    }//GEN-LAST:event_btnlogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,23 +514,23 @@ public class BerandaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnlogout;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel pberanda;
+    private javax.swing.JPanel pkaryawan;
+    private javax.swing.JPanel ppelanggan;
+    private javax.swing.JPanel ppembayaran;
+    private javax.swing.JPanel ppendataan;
+    private javax.swing.JPanel ppengambilan;
+    private javax.swing.JLabel txtberanda;
+    private javax.swing.JLabel txtkaryawan;
+    private javax.swing.JLabel txtpelanggan;
+    private javax.swing.JLabel txtpembayaran;
+    private javax.swing.JLabel txtpendataan;
+    private javax.swing.JLabel txtpengambilan;
     // End of variables declaration//GEN-END:variables
 }
