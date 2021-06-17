@@ -5,8 +5,10 @@
  */
 package yundry;
 
+import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +21,8 @@ public class BerandaAdmin extends javax.swing.JFrame {
      */
     public BerandaAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        tampil_data();
     }
 
     /**
@@ -46,6 +50,14 @@ public class BerandaAdmin extends javax.swing.JFrame {
         ppengambilan = new javax.swing.JPanel();
         txtpengambilan = new javax.swing.JLabel();
         btnlogout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txttext = new javax.swing.JTextArea();
+        btnsimpan = new javax.swing.JButton();
+        btnedit = new javax.swing.JButton();
+        btnhapus = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbberanda = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -308,19 +320,131 @@ public class BerandaAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel2.setFont(new java.awt.Font("Trajan Pro", 1, 36)); // NOI18N
+        jLabel2.setText("WELCOME");
+
+        txttext.setColumns(20);
+        txttext.setRows(5);
+        jScrollPane2.setViewportView(txttext);
+
+        btnsimpan.setBackground(new java.awt.Color(253, 234, 127));
+        btnsimpan.setText("SIMPAN");
+        btnsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsimpanActionPerformed(evt);
+            }
+        });
+
+        btnedit.setBackground(new java.awt.Color(253, 234, 127));
+        btnedit.setText("EDIT");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
+
+        btnhapus.setBackground(new java.awt.Color(253, 234, 127));
+        btnhapus.setText("HAPUS");
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapusActionPerformed(evt);
+            }
+        });
+
+        tbberanda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane3.setViewportView(tbberanda);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1192, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(477, 477, 477))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnsimpan, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(btnedit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnhapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(44, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnsimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnedit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnhapus))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -471,6 +595,78 @@ public class BerandaAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnlogoutActionPerformed
 
+    private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
+        // TODO add your handling code here:
+        try{
+            String sql="insert into beranda values('"
+            + txttext.getText()+"')";
+
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Berhasil disimpan");
+            tampil_data();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal disimpan");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnsimpanActionPerformed
+
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+        // TODO add your handling code here:
+        try{
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql="update beranda set text ='"+ txttext.getText()+"'";
+
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Data berhasil di Koreksi");
+            tampil_data();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Proses Edit data Gagal");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btneditActionPerformed
+
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
+        // TODO add your handling code here:
+        try{
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql = "delete from beranda where text='" + txttext.getText()+"' ";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Data berhasil di hapus");
+            tampil_data();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Proses Penghapusan Gagal");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnhapusActionPerformed
+
+    public void tampil_data(){
+        DefaultTableModel tabel=new DefaultTableModel();
+        tabel.addColumn("TEXT");
+
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql="select *from beranda";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while (rs.next())
+            {
+            tabel.addRow(new Object[]{
+                rs.getString(1)});
+                
+            }
+            tbberanda.setModel(tabel);
+            }
+        catch (Exception e){
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -507,21 +703,29 @@ public class BerandaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnedit;
+    private javax.swing.JButton btnhapus;
     private javax.swing.JButton btnlogout;
+    private javax.swing.JButton btnsimpan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel pberanda;
     private javax.swing.JPanel pkaryawan;
     private javax.swing.JPanel ppelanggan;
     private javax.swing.JPanel ppembayaran;
     private javax.swing.JPanel ppendataan;
     private javax.swing.JPanel ppengambilan;
+    private javax.swing.JTable tbberanda;
     private javax.swing.JLabel txtberanda;
     private javax.swing.JLabel txtkaryawan;
     private javax.swing.JLabel txtpelanggan;
     private javax.swing.JLabel txtpembayaran;
     private javax.swing.JLabel txtpendataan;
     private javax.swing.JLabel txtpengambilan;
+    private javax.swing.JTextArea txttext;
     // End of variables declaration//GEN-END:variables
 }
