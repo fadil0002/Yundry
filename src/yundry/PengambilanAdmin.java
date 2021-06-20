@@ -63,18 +63,13 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtjumlah = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txttotalbayar = new javax.swing.JTextField();
+        txttanggalambil = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         cbjenispaket = new javax.swing.JComboBox<>();
-        txtbayar = new javax.swing.JTextField();
-        txtkembali = new javax.swing.JTextField();
+        txtstatus = new javax.swing.JTextField();
         btnhapus = new javax.swing.JButton();
         btnedit = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -351,21 +346,21 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         tbpengambilan.setFont(new java.awt.Font("Sylfaen", 0, 13)); // NOI18N
         tbpengambilan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane1.setViewportView(tbpengambilan);
@@ -395,7 +390,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         txtidpesanan.setPreferredSize(new java.awt.Dimension(433, 36));
 
         jLabel9.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
-        jLabel9.setText("Nama Pelanggan");
+        jLabel9.setText("Nama Pengambil");
 
         txtnamapelanggan.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         txtnamapelanggan.setPreferredSize(new java.awt.Dimension(433, 36));
@@ -407,22 +402,16 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         jLabel3.setText("Jumlah");
 
         jLabel4.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
-        jLabel4.setText("Total Bayar");
+        jLabel4.setText("Tanggal Ambil");
 
         jLabel5.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
-        jLabel5.setText("Bayar");
-
-        jLabel6.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
-        jLabel6.setText("Kembali");
+        jLabel5.setText("Status");
 
         txtjumlah.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         txtjumlah.setPreferredSize(new java.awt.Dimension(433, 36));
 
-        jLabel7.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        jLabel7.setText("Rp");
-
-        txttotalbayar.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        txttotalbayar.setPreferredSize(new java.awt.Dimension(433, 36));
+        txttanggalambil.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
+        txttanggalambil.setPreferredSize(new java.awt.Dimension(433, 36));
 
         jLabel12.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         jLabel12.setText("/ Kg");
@@ -431,11 +420,8 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         cbjenispaket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Paket", "Paket A", "Paket B", "Paket C", "Paket D" }));
         cbjenispaket.setPreferredSize(new java.awt.Dimension(433, 36));
 
-        txtbayar.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        txtbayar.setPreferredSize(new java.awt.Dimension(433, 36));
-
-        txtkembali.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        txtkembali.setPreferredSize(new java.awt.Dimension(433, 36));
+        txtstatus.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
+        txtstatus.setPreferredSize(new java.awt.Dimension(433, 36));
 
         btnhapus.setBackground(new java.awt.Color(253, 234, 127));
         btnhapus.setText("HAPUS");
@@ -452,12 +438,6 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 btneditActionPerformed(evt);
             }
         });
-
-        jLabel8.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        jLabel8.setText("Rp");
-
-        jLabel11.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        jLabel11.setText("Rp");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -485,33 +465,19 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel5)
-                                                        .addComponent(jLabel6))
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                            .addGap(236, 236, 236)
-                                                            .addComponent(jLabel7))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                            .addComponent(jLabel11))))
-                                                .addComponent(jLabel8))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtbayar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(txttotalbayar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(39, 39, 39)
-                                            .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(162, 162, 162)
+                                        .addComponent(txttanggalambil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(265, 265, 265)
+                                        .addComponent(txtstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(178, 178, 178))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -565,21 +531,14 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                     .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(txttotalbayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttanggalambil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(txtbayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtkembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
+                    .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -748,9 +707,8 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 txtnamapelanggan.setText(rs.getString(2));
                 cbjenispaket.setSelectedItem(rs.getString(3));
                 txtjumlah.setText(rs.getString(4));
-                txttotalbayar.setText(rs.getString(5));
-                txtbayar.setText(rs.getString(6));
-                txtkembali.setText(rs.getString(7));
+                txttanggalambil.setText(rs.getString(5));
+                txtstatus.setText(rs.getString(6));
                 JOptionPane.showMessageDialog(null,"Data pendataan : "
                     + txtcari.getText() + " ditemukan, Apakah Anda Ingin Mengedit atau Menghapus?");
             }
@@ -764,9 +722,8 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         txtnamapelanggan.setText("");
         cbjenispaket.setSelectedItem("");
         txtjumlah.setText("");
-        txttotalbayar.setText("");
-        txtbayar.setText("");
-        txtkembali.setText("");
+        txttanggalambil.setText("");
+        txtstatus.setText("");
         txtidpesanan.requestFocus();
     }//GEN-LAST:event_btnbatalActionPerformed
 
@@ -778,9 +735,8 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             + txtnamapelanggan.getText()+"','"
             + cbjenispaket.getSelectedItem()+"','"
             + txtjumlah.getText()+"','"
-            + txttotalbayar.getText()+"','"
-            + txtbayar.getText()+"','"
-            + txtkembali.getText()+"')";
+            + txttanggalambil.getText()+"','"
+            + txtstatus.getText()+"')";
 
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
@@ -818,9 +774,8 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             String sql="update pengambilan set nama_pelanggan ='"+ txtnamapelanggan.getText()
             +"', jenis_paket ='"+ cbjenispaket.getSelectedItem()
             +"', jumlah ='"+ txtjumlah.getText()
-            +"', total_bayar ='"+ txttotalbayar.getText()
-            +"', bayar ='"+ txtbayar.getText()
-            +"', kembali ='"+ txtkembali.getText()
+            +"', tanggal_ambil ='"+ txttanggalambil.getText()
+            +"', status ='"+ txtstatus.getText()
             +"' where id_pesanan ='"+ txtidpesanan.getText()+"'";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -836,12 +791,11 @@ public class PengambilanAdmin extends javax.swing.JFrame {
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
         tabel.addColumn("ID PESANAN");
-        tabel.addColumn("NAMA PELANGGAN");
+        tabel.addColumn("NAMA PENGAMBIL");
         tabel.addColumn("JENIS PAKET");
         tabel.addColumn("JUMLAH");
-        tabel.addColumn("TOTAL BAYAR");
-        tabel.addColumn("BAYAR");
-        tabel.addColumn("KEMBALI");
+        tabel.addColumn("TANGGAL AMBIL");
+        tabel.addColumn("STATUS");
 
         try {
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
@@ -856,8 +810,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
-                rs.getString(6),
-                rs.getString(7)});
+                rs.getString(6)});
             }
             tbpengambilan.setModel(tabel);
             }
@@ -909,15 +862,11 @@ public class PengambilanAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbjenispaket;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -929,18 +878,17 @@ public class PengambilanAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel ppendataan;
     private javax.swing.JPanel ppengambilan;
     private javax.swing.JTable tbpengambilan;
-    private javax.swing.JTextField txtbayar;
     private javax.swing.JLabel txtberanda;
     private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtidpesanan;
     private javax.swing.JTextField txtjumlah;
     private javax.swing.JLabel txtkaryawan;
-    private javax.swing.JTextField txtkembali;
     private javax.swing.JTextField txtnamapelanggan;
     private javax.swing.JLabel txtpelanggan;
     private javax.swing.JLabel txtpembayaran;
     private javax.swing.JLabel txtpendataan;
     private javax.swing.JLabel txtpengambilan;
-    private javax.swing.JTextField txttotalbayar;
+    private javax.swing.JTextField txtstatus;
+    private javax.swing.JTextField txttanggalambil;
     // End of variables declaration//GEN-END:variables
 }

@@ -71,7 +71,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txttanggalambil = new javax.swing.JTextField();
+        txtrencanaambil = new javax.swing.JTextField();
         cbjenispaket = new javax.swing.JComboBox<>();
         txtjumlah = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -440,7 +440,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
-        jLabel2.setText("Tanggal Ambil");
+        jLabel2.setText("Rencana Ambil");
 
         jLabel3.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
         jLabel3.setText("Jenis Paket");
@@ -454,8 +454,8 @@ public class PendataanAdmin extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
         jLabel6.setText("Total Bayar");
 
-        txttanggalambil.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        txttanggalambil.setPreferredSize(new java.awt.Dimension(433, 36));
+        txtrencanaambil.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
+        txtrencanaambil.setPreferredSize(new java.awt.Dimension(433, 36));
 
         cbjenispaket.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         cbjenispaket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Paket", "Paket A", "Paket B", "Paket C", "Paket D" }));
@@ -523,7 +523,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
                                         .addComponent(txtnamakaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtnamapelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txttanggalpesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txttanggalambil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtrencanaambil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(cbjenispaket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(0, 0, Short.MAX_VALUE)))))
                     .addComponent(jLabel2)
@@ -564,7 +564,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(txttanggalambil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtrencanaambil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -756,7 +756,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
                 txtnamakaryawan.setText(rs.getString(2));
                 txtnamapelanggan.setText(rs.getString(3));
                 txttanggalpesanan.setText(rs.getString(4));
-                txttanggalambil.setText(rs.getString(5));
+                txtrencanaambil.setText(rs.getString(5));
                 cbjenispaket.setSelectedItem(rs.getString(6));
                 txtjumlah.setText(rs.getString(7));
                 txtketerangan.setText(rs.getString(8));
@@ -792,7 +792,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
             String sql="update pendataan set nama_karyawan ='" + txtnamakaryawan.getText()
             +"', nama_pelanggan ='"+ txtnamapelanggan.getText()
             +"', tanggal_pesanan ='"+ txttanggalpesanan.getText()
-            +"', tanggal_ambil ='"+ txttanggalambil.getText()
+            +"', tanggal_ambil ='"+ txtrencanaambil.getText()
             +"', jenis_paket ='"+ cbjenispaket.getSelectedItem()
             +"', jumlah ='"+ txtjumlah.getText()
             +"', keterangan ='"+ txtketerangan.getText()
@@ -817,7 +817,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
             + txtnamakaryawan.getText()+"','"
             + txtnamapelanggan.getText()+"','"
             + txttanggalpesanan.getText()+"','"
-            + txttanggalambil.getText()+"','"
+            + txtrencanaambil.getText()+"','"
             + cbjenispaket.getSelectedItem()+"','"
             + txtjumlah.getText()+"','"
             + txtketerangan.getText()+"','"
@@ -840,7 +840,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
         txtnamakaryawan.setText("");
         txtnamapelanggan.setText("");
         txttanggalpesanan.setText("");
-        txttanggalambil.setText("");
+        txtrencanaambil.setText("");
         cbjenispaket.setSelectedItem("");
         txtjumlah.setText("");
         txtketerangan.setText("");
@@ -854,7 +854,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
         tabel.addColumn("NAMA KARYAWAN");
         tabel.addColumn("NAMA PELANGGAN");
         tabel.addColumn("TANGGAL PESANAN");
-        tabel.addColumn("TANGGAL AMBIL");
+        tabel.addColumn("RENCANA AMBIL");
         tabel.addColumn("JENIS PAKET");
         tabel.addColumn("JUMLAH");
         tabel.addColumn("KETERANGAN");
@@ -961,7 +961,7 @@ public class PendataanAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel txtpembayaran;
     private javax.swing.JLabel txtpendataan;
     private javax.swing.JLabel txtpengambilan;
-    private javax.swing.JTextField txttanggalambil;
+    private javax.swing.JTextField txtrencanaambil;
     private javax.swing.JTextField txttanggalpesanan;
     private javax.swing.JTextField txttotalbayar;
     // End of variables declaration//GEN-END:variables

@@ -5,10 +5,20 @@
  */
 package yundry;
 
+import java.io.File;
 import javax.swing.JFrame;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author HP
@@ -81,6 +91,7 @@ public class PembayaranAdmin extends javax.swing.JFrame {
         txtkembali = new javax.swing.JTextField();
         btnedit = new javax.swing.JButton();
         btnhapus = new javax.swing.JButton();
+        txtcetak = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -431,6 +442,11 @@ public class PembayaranAdmin extends javax.swing.JFrame {
         btncetak.setBackground(new java.awt.Color(253, 234, 127));
         btncetak.setText("CETAK STRUK PEMBAYARAN");
         btncetak.setPreferredSize(new java.awt.Dimension(151, 36));
+        btncetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncetakActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
         jLabel2.setText("Jenis Paket");
@@ -504,6 +520,8 @@ public class PembayaranAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btncetak, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addComponent(btntabelpendataan, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -586,7 +604,8 @@ public class PembayaranAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntabelpendataan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncetak, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btncetak, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtidpembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -859,7 +878,7 @@ public class PembayaranAdmin extends javax.swing.JFrame {
         rgf.pack();
         rgf.setLocationRelativeTo(null);
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        
     }//GEN-LAST:event_btntabelpendataanMouseClicked
 
     private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
@@ -902,6 +921,27 @@ public class PembayaranAdmin extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void btncetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+
+        try {
+            java.sql.Connection con = (java.sql.Connection)yundry.connection.getConnection();
+            String sql = "select * from dokter";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
+            JasperDesign design = JRXmlLoader.load(dirr + "laporandokter.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(jp, false);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btncetakActionPerformed
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
@@ -1011,6 +1051,7 @@ public class PembayaranAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtbayar;
     private javax.swing.JLabel txtberanda;
     private javax.swing.JTextField txtcari;
+    private javax.swing.JTextField txtcetak;
     private javax.swing.JTextField txtidpembayaran;
     private javax.swing.JTextField txtidpesanan;
     private javax.swing.JTextField txtjumlah;

@@ -58,6 +58,8 @@ public class BerandaAdmin extends javax.swing.JFrame {
         btnhapus = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbberanda = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txturut = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -353,53 +355,65 @@ public class BerandaAdmin extends javax.swing.JFrame {
 
         tbberanda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1"
+                "Title 1", "Title 2"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tbberanda);
+
+        txturut.setColumns(20);
+        txturut.setRows(5);
+        jScrollPane1.setViewportView(txturut);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -413,11 +427,15 @@ public class BerandaAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(477, 477, 477))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnsimpan, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -443,7 +461,8 @@ public class BerandaAdmin extends javax.swing.JFrame {
                         .addComponent(btnedit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnhapus))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -599,8 +618,9 @@ public class BerandaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             String sql="insert into beranda values('"
-            + txttext.getText()+"')";
-
+                    + txturut.getText()+"','"
+                    + txttext.getText()+"')";
+                    
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
@@ -617,16 +637,17 @@ public class BerandaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
-            String sql="update beranda set text ='"+ txttext.getText()+"'";
-
+            String sql="update beranda set text ='"+ txttext.getText()
+                    +"' where urut ='"+ txturut.getText()+"'";
+            
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data berhasil di Koreksi");
             tampil_data();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Proses Edit data Gagal");
-            System.out.println(e.getMessage());
+        JOptionPane.showMessageDialog(null,"Proses Edit data Gagal");
+        System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btneditActionPerformed
 
@@ -634,7 +655,7 @@ public class BerandaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
-            String sql = "delete from beranda where text='" + txttext.getText()+"' ";
+            String sql = "delete from beranda where urut='" + txturut.getText()+"' ";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.executeUpdate();
 
@@ -642,13 +663,14 @@ public class BerandaAdmin extends javax.swing.JFrame {
             tampil_data();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Proses Penghapusan Gagal");
-            System.out.println(e.getMessage());
+        JOptionPane.showMessageDialog(null,"Proses Penghapusan Gagal");
+        System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnhapusActionPerformed
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
+        tabel.addColumn("URUT");
         tabel.addColumn("TEXT");
 
         try {
@@ -659,7 +681,8 @@ public class BerandaAdmin extends javax.swing.JFrame {
             while (rs.next())
             {
             tabel.addRow(new Object[]{
-                rs.getString(1)});
+                rs.getString(1),
+                rs.getString(2)});
                 
             }
             tbberanda.setModel(tabel);
@@ -711,6 +734,7 @@ public class BerandaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel pberanda;
@@ -727,5 +751,6 @@ public class BerandaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel txtpendataan;
     private javax.swing.JLabel txtpengambilan;
     private javax.swing.JTextArea txttext;
+    private javax.swing.JTextArea txturut;
     // End of variables declaration//GEN-END:variables
 }

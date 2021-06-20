@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="400" pageHeight="380" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55800ea3-e573-4022-a37c-c2cfb23d10f6">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * from pembayaran where id_pembayaran = $P{id}]]>
+	</queryString>
+	<field name="id_pembayaran" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_pesanan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_pelanggan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_pembayaran" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_paket" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jumlah" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_bayar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kembali" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="212400cf-cbb2-41ff-b4fe-1f26a7a30c24" style="Title" x="0" y="0" width="360" height="82"/>
+				<textElement textAlignment="Center">
+					<font fontName="Stencil Std" size="44" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[YUNDRY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d37435ab-1406-4d59-81e5-fc68d5574938" style="SubTitle" x="0" y="47" width="360" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jalan Muhammad Hatta, Pasar Baru, Pauh, Padang]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ee7d0286-f8f4-4aae-9667-a4c8328a851e" positionType="FixRelativeToBottom" x="0" y="82" width="360" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="875fc06e-a626-4d36-8093-5c3921e86b05" x="0" y="63" width="360" height="19"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="14"/>
+				</textElement>
+				<text><![CDATA[Telp.(083)2345678]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="180" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6526e79a-aaad-4e15-afec-6e34ec1e47b1" style="Column header" positionType="Float" x="75" y="20" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Id Pesanan]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="48a3565b-c7c2-4943-b81e-584fb1570ff8" style="Detail" positionType="Float" x="188" y="20" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_pesanan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="561c7aba-d1c5-4b4e-848c-8817ee7e54dc" style="Column header" positionType="Float" x="75" y="40" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nama Pelanggan]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="fc6c0bef-c6ae-446f-a963-66a3f3721201" style="Detail" positionType="Float" x="188" y="40" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_pelanggan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2086726d-ff79-487e-9fe1-cde7088c3bc3" style="Column header" positionType="Float" x="75" y="60" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tanggal Pembayaran]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8739acd8-b51d-46ee-84b0-877b8a51f1bd" style="Detail" positionType="Float" x="188" y="60" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal_pembayaran}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ccc8f8dc-deb6-4ef8-8eb1-a0efc9116a7d" style="Column header" positionType="Float" x="75" y="80" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jenis Paket]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e824cea0-98c3-405b-a239-7ae51caaa347" style="Detail" positionType="Float" x="188" y="80" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" isStrikeThrough="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_paket}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f04452b2-5ce0-45f0-affb-091f1da5ad5b" style="Column header" positionType="Float" x="75" y="100" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8ae78286-2fb9-403e-9361-312b29ac8296" style="Detail" positionType="Float" x="188" y="100" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="68e8432a-7709-45d3-91db-7710b9268683" style="Column header" positionType="Float" x="75" y="120" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Bayar]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="50bdd3f6-8555-4252-b50d-d09d57232291" style="Detail" positionType="Float" x="188" y="120" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_bayar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="141ba9bc-eeed-43e1-8ab2-8bce6ba601a7" style="Column header" positionType="Float" x="75" y="140" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="73b11dcc-d4d3-4582-839b-1c95ecb4744b" style="Detail" positionType="Float" x="188" y="140" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bayar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3069178e-a1fe-433d-93af-b5419da068c7" style="Column header" positionType="Float" x="75" y="160" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kembali]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="de58cda7-fc55-4803-abc1-0f4295257526" style="Detail" positionType="Float" x="188" y="160" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kembali}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c579f4b2-d544-4fdb-949b-e16e31108529" style="Detail" positionType="Float" x="188" y="2" width="172" height="17"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_pembayaran}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e721726c-2355-4dc2-8174-9f314ba774ea" style="Column header" positionType="Float" x="75" y="2" width="102" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Id Pembayaran]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement uuid="2805876b-4c0c-424a-9e1a-ee10f207e80e" positionType="FixRelativeToBottom" x="0" y="3" width="360" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="66" splitType="Stretch">
+			<frame>
+				<reportElement uuid="8903a1f1-2458-4fa3-86cc-0a1cb9aefd36" mode="Opaque" x="0" y="0" width="360" height="66" forecolor="#D0B48E" backcolor="#9DB1B8"/>
+				<staticText>
+					<reportElement uuid="f66406f7-230c-4619-8541-662f125897fc" x="0" y="13" width="360" height="20"/>
+					<textElement textAlignment="Center">
+						<font fontName="Stencil Std" size="14"/>
+					</textElement>
+					<text><![CDATA[Terima Kasih]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f3a35bdd-c3d7-4463-acf9-9d74381b0071" x="0" y="33" width="360" height="20"/>
+					<textElement textAlignment="Center">
+						<font fontName="Stencil Std" size="14"/>
+					</textElement>
+					<text><![CDATA[selamat datang kembali]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,10 +5,22 @@
  */
 package yundry;
 
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -437,6 +449,11 @@ public class PembayaranForm extends javax.swing.JFrame {
         btncetak.setBackground(new java.awt.Color(253, 234, 127));
         btncetak.setText("CETAK STRUK PEMBAYARAN");
         btncetak.setPreferredSize(new java.awt.Dimension(151, 36));
+        btncetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncetakActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
         jLabel2.setText("Jenis Paket");
@@ -575,8 +592,8 @@ public class PembayaranForm extends javax.swing.JFrame {
                                             .addComponent(txtidpembayaran, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(37, 37, 37)
+                                        .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(4, 4, 4)))
                         .addGap(180, 180, 180))))
         );
@@ -596,7 +613,7 @@ public class PembayaranForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntabelpendataan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncetak, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcetak, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtidpembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -910,8 +927,40 @@ public class PembayaranForm extends javax.swing.JFrame {
         rgf.pack();
         rgf.setLocationRelativeTo(null);
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        
     }//GEN-LAST:event_btntabelpendataanMouseClicked
+
+    private void btncetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakActionPerformed
+        // TODO add your handling code here:
+        java.sql.Connection con = null;
+        try {
+            String jdbcDriver = "com.mysql.jdbc.Driver";
+            Class.forName(jdbcDriver);
+            
+            String db = "jdbc:mysql://localhost:3306/yundry";
+            String user = "root";
+            String password = "";
+            
+            con = DriverManager.getConnection(db, user, password);
+            Statement stm = con.createStatement();
+            
+            try{
+                String report = ("D:\\Semester 4\\Project1\\YUNDRY\\src\\yundry\\report1.jrxml");
+                
+                HashMap hash = new HashMap();
+                hash.put("id", txtcetak.getText());
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con);
+                JasperViewer.viewReport(JPrint, false);
+            } catch (Exception rptexcpt){
+                System.out.println("Report Can't view because : " + rptexcpt);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PembayaranForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PembayaranForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btncetakActionPerformed
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
