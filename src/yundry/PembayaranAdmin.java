@@ -6,9 +6,14 @@
 package yundry;
 
 import java.io.File;
+import java.sql.DriverManager;
 import javax.swing.JFrame;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -924,22 +929,33 @@ public class PembayaranAdmin extends javax.swing.JFrame {
 
     private void btncetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakActionPerformed
         // TODO add your handling code here:
-        File reportFile = new File(".");
-        String dirr = "";
-
+        java.sql.Connection con = null;
         try {
-            java.sql.Connection con = (java.sql.Connection)yundry.connection.getConnection();
-            String sql = "select * from dokter";
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
-            JasperDesign design = JRXmlLoader.load(dirr + "laporandokter.jrxml");
-            JasperReport report = JasperCompileManager.compileReport(design);
-            ResultSet rs = pst.executeQuery(sql);
-            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
-            JasperPrint jp = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
-            JasperViewer.viewReport(jp, false);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+            String jdbcDriver = "com.mysql.jdbc.Driver";
+            Class.forName(jdbcDriver);
+            
+            String db = "jdbc:mysql://localhost:3306/yundry";
+            String user = "root";
+            String password = "";
+            
+            con = DriverManager.getConnection(db, user, password);
+            Statement stm = con.createStatement();
+            
+            try{
+                String report = ("D:\\Semester 4\\Project1\\YUNDRY\\src\\yundry\\report1.jrxml");
+                
+                HashMap hash = new HashMap();
+                hash.put("id", txtcetak.getText());
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con);
+                JasperViewer.viewReport(JPrint, false);
+            } catch (Exception rptexcpt){
+                System.out.println("Report Can't view because : " + rptexcpt);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PembayaranForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PembayaranForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btncetakActionPerformed
 
