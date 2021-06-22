@@ -366,6 +366,11 @@ public class KaryawanForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbkaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbkaryawanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbkaryawan);
 
         jLabel8.setFont(new java.awt.Font("Cambria Math", 0, 28)); // NOI18N
@@ -656,6 +661,15 @@ public class KaryawanForm extends javax.swing.JFrame {
         txtnotelp.setText("");
         txtidkaryawan.requestFocus();
     }//GEN-LAST:event_btnbatalActionPerformed
+
+    private void tbkaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbkaryawanMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbkaryawan.getSelectedRow();
+        txtidkaryawan.setText(tbkaryawan.getValueAt(tabel, 0).toString());
+        txtnama.setText(tbkaryawan.getValueAt(tabel, 1).toString());
+        txtalamat.setText(tbkaryawan.getValueAt(tabel, 2).toString());
+        txtnotelp.setText(tbkaryawan.getValueAt(tabel, 3).toString());
+    }//GEN-LAST:event_tbkaryawanMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

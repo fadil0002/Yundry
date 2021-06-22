@@ -363,6 +363,11 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
+        tbpengambilan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpengambilanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbpengambilan);
 
         btnbatal.setBackground(new java.awt.Color(253, 234, 127));
@@ -787,6 +792,17 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btneditActionPerformed
+
+    private void tbpengambilanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpengambilanMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbpengambilan.getSelectedRow();
+        txtidpesanan.setText(tbpengambilan.getValueAt(tabel, 0).toString());
+        txtnamapelanggan.setText(tbpengambilan.getValueAt(tabel, 1).toString());
+        cbjenispaket.setSelectedItem(tbpengambilan.getValueAt(tabel, 2).toString());
+        txtjumlah.setText(tbpengambilan.getValueAt(tabel, 3).toString());
+        txttanggalambil.setText(tbpengambilan.getValueAt(tabel, 4).toString());
+        txtstatus.setText(tbpengambilan.getValueAt(tabel, 5).toString());
+    }//GEN-LAST:event_tbpengambilanMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

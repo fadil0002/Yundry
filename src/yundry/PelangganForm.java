@@ -367,6 +367,11 @@ public class PelangganForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbpelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpelangganMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbpelanggan);
 
         btnhapus.setBackground(new java.awt.Color(253, 234, 127));
@@ -743,6 +748,15 @@ public class PelangganForm extends javax.swing.JFrame {
         System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void tbpelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpelangganMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbpelanggan.getSelectedRow();
+        txtidpelanggan.setText(tbpelanggan.getValueAt(tabel, 0).toString());
+        txtnama.setText(tbpelanggan.getValueAt(tabel, 1).toString());
+        txtalamat.setText(tbpelanggan.getValueAt(tabel, 2).toString());
+        txtnotelp.setText(tbpelanggan.getValueAt(tabel, 3).toString());
+    }//GEN-LAST:event_tbpelangganMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

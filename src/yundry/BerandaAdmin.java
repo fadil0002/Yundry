@@ -409,6 +409,11 @@ public class BerandaAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbberanda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbberandaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbberanda);
 
         txturut.setColumns(20);
@@ -667,6 +672,13 @@ public class BerandaAdmin extends javax.swing.JFrame {
         System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void tbberandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbberandaMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbberanda.getSelectedRow();
+        txturut.setText(tbberanda.getValueAt(tabel, 0).toString());
+        txttext.setText(tbberanda.getValueAt(tabel, 1).toString());
+    }//GEN-LAST:event_tbberandaMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

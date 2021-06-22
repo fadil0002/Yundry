@@ -372,6 +372,11 @@ public class KaryawanAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        tbkaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbkaryawanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbkaryawan);
 
         btnhapus.setBackground(new java.awt.Color(253, 234, 127));
@@ -764,6 +769,16 @@ public class KaryawanAdmin extends javax.swing.JFrame {
         System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void tbkaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbkaryawanMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbkaryawan.getSelectedRow();
+        txtidkaryawan.setText(tbkaryawan.getValueAt(tabel, 0).toString());
+        txtnama.setText(tbkaryawan.getValueAt(tabel, 1).toString());
+        txtpassword.setText(tbkaryawan.getValueAt(tabel, 2).toString());
+        txtalamat.setText(tbkaryawan.getValueAt(tabel, 3).toString());
+        txtnotelp.setText(tbkaryawan.getValueAt(tabel, 4).toString());
+    }//GEN-LAST:event_tbkaryawanMouseClicked
        
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

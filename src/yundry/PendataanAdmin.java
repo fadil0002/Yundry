@@ -377,6 +377,11 @@ public class PendataanAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
+        tbpendataan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpendataanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbpendataan);
 
         btnhapus.setBackground(new java.awt.Color(253, 234, 127));
@@ -847,6 +852,20 @@ public class PendataanAdmin extends javax.swing.JFrame {
         txttotalbayar.setText("");
         txtidpesanan.requestFocus();
     }//GEN-LAST:event_btnbatalActionPerformed
+
+    private void tbpendataanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpendataanMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbpendataan.getSelectedRow();
+        txtidpesanan.setText(tbpendataan.getValueAt(tabel, 0).toString());
+        txtnamakaryawan.setText(tbpendataan.getValueAt(tabel, 1).toString());
+        txtnamapelanggan.setText(tbpendataan.getValueAt(tabel, 2).toString());
+        txttanggalpesanan.setText(tbpendataan.getValueAt(tabel, 3).toString());
+        txtrencanaambil.setText(tbpendataan.getValueAt(tabel, 4).toString());
+        cbjenispaket.setSelectedItem(tbpendataan.getValueAt(tabel, 5).toString());
+        txtjumlah.setText(tbpendataan.getValueAt(tabel, 6).toString());
+        txtketerangan.setText(tbpendataan.getValueAt(tabel, 7).toString());
+        txttotalbayar.setText(tbpendataan.getValueAt(tabel, 8).toString());
+    }//GEN-LAST:event_tbpendataanMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();

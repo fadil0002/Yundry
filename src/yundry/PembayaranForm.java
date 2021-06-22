@@ -393,6 +393,11 @@ public class PembayaranForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
+        tbpembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpembayaranMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbpembayaran);
 
         btnbatal.setBackground(new java.awt.Color(253, 234, 127));
@@ -961,6 +966,20 @@ public class PembayaranForm extends javax.swing.JFrame {
             Logger.getLogger(PembayaranForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btncetakActionPerformed
+
+    private void tbpembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpembayaranMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbpembayaran.getSelectedRow();
+        txtidpembayaran.setText(tbpembayaran.getValueAt(tabel, 0).toString());
+        txtidpesanan.setText(tbpembayaran.getValueAt(tabel, 1).toString());
+        txtnamapelanggan.setText(tbpembayaran.getValueAt(tabel, 2).toString());
+        txttanggalpembayaran.setText(tbpembayaran.getValueAt(tabel, 3).toString());
+        cbjenispaket.setSelectedItem(tbpembayaran.getValueAt(tabel, 4).toString());
+        txtjumlah.setText(tbpembayaran.getValueAt(tabel, 5).toString());
+        txttotalbayar.setText(tbpembayaran.getValueAt(tabel, 6).toString());
+        txtbayar.setText(tbpembayaran.getValueAt(tabel, 7).toString());
+        txtkembali.setText(tbpembayaran.getValueAt(tabel, 8).toString());
+    }//GEN-LAST:event_tbpembayaranMouseClicked
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
