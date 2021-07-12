@@ -5,10 +5,21 @@
  */
 package yundry;
 
+import java.io.File;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -23,6 +34,7 @@ public class PelangganForm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         tampil_data();
+        autonumber();
     }
 
     /**
@@ -66,6 +78,7 @@ public class PelangganForm extends javax.swing.JFrame {
         txtnotelp = new javax.swing.JTextField();
         btnsimpan = new javax.swing.JButton();
         btnbatal = new javax.swing.JButton();
+        btnprintdata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -434,6 +447,15 @@ public class PelangganForm extends javax.swing.JFrame {
             }
         });
 
+        btnprintdata.setBackground(new java.awt.Color(253, 234, 127));
+        btnprintdata.setText("PRINT DATA");
+        btnprintdata.setPreferredSize(new java.awt.Dimension(151, 36));
+        btnprintdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprintdataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -443,14 +465,15 @@ public class PelangganForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btncari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btncari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnprintdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -487,11 +510,12 @@ public class PelangganForm extends javax.swing.JFrame {
                     .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnprintdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtidpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -676,6 +700,7 @@ public class PelangganForm extends javax.swing.JFrame {
             pst.execute();
             JOptionPane.showMessageDialog(null, "Berhasil disimpan");
             tampil_data();
+            autonumber();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Gagal disimpan");
@@ -685,11 +710,11 @@ public class PelangganForm extends javax.swing.JFrame {
 
     private void btnbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbatalActionPerformed
         // TODO add your handling code here:
-        txtidpelanggan.setText("");
         txtnama.setText("");
         txtalamat.setText("");
         txtnotelp.setText("");
-        txtidpelanggan.requestFocus();
+        txtnama.requestFocus();
+        autonumber();
     }//GEN-LAST:event_btnbatalActionPerformed
 
     private void btncariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncariActionPerformed
@@ -700,6 +725,7 @@ public class PelangganForm extends javax.swing.JFrame {
             String sql = "Select * from pelanggan where id_pelanggan='"+txtcari.getText()+"' or nama_pelanggan='"+txtcari.getText()+"'";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
+            autonumber();
              if (rs.next())
              {
                  txtidpelanggan.setText(rs.getString(1));
@@ -725,6 +751,7 @@ public class PelangganForm extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data berhasil di Koreksi");
             tampil_data();
+            autonumber();
         }
         catch (Exception e){
         JOptionPane.showMessageDialog(null,"Proses Edit data Gagal");
@@ -742,6 +769,7 @@ public class PelangganForm extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null,"Data berhasil di hapus");
             tampil_data();
+            autonumber();
         }
         catch (Exception e){
         JOptionPane.showMessageDialog(null,"Proses Penghapusan Gagal");
@@ -757,6 +785,27 @@ public class PelangganForm extends javax.swing.JFrame {
         txtalamat.setText(tbpelanggan.getValueAt(tabel, 2).toString());
         txtnotelp.setText(tbpelanggan.getValueAt(tabel, 3).toString());
     }//GEN-LAST:event_tbpelangganMouseClicked
+
+    private void btnprintdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprintdataActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+        
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql = "select * from pelanggan";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/yundry/";
+            JasperDesign design = JRXmlLoader.load(dirr + "pelanggan.jrxml");
+            JasperReport report =JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint JPrint = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(JPrint, false);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnprintdataActionPerformed
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
@@ -781,6 +830,33 @@ public class PelangganForm extends javax.swing.JFrame {
             tbpelanggan.setModel(tabel);
             }
         catch (Exception e){
+        }
+    }
+    
+    public void autonumber(){
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            Statement pst = conn.createStatement();
+            String sql="select max(right(id_pelanggan,3)) as no from pelanggan";
+            ResultSet rs = pst.executeQuery(sql);
+            
+            while (rs.next())
+            {
+            if(rs.first() == false){
+                txtidpelanggan.setText("P001");
+            }else{
+                rs.last();
+                int set_id = rs.getInt(1)+1;
+                String no = String.valueOf(set_id);
+                int id_next = no.length();
+                for(int i=0; i<3-id_next; i++){
+                    no = "0" + no;
+                }
+                txtidpelanggan.setText("P"+ no);
+            }   
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Auto Number Gagal", "Error", 2);
         }
     }
     /**
@@ -824,6 +900,7 @@ public class PelangganForm extends javax.swing.JFrame {
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnhapus;
     private javax.swing.JButton btnlogout;
+    private javax.swing.JButton btnprintdata;
     private javax.swing.JButton btnsimpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

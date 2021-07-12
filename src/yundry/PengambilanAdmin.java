@@ -5,10 +5,20 @@
  */
 package yundry;
 
+import java.io.File;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author HP
@@ -22,6 +32,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         tampil_data();
+        tampil_pesanan();
     }
 
     /**
@@ -66,10 +77,15 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         txtjumlah = new javax.swing.JTextField();
         txttanggalambil = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        cbjenispaket = new javax.swing.JComboBox<>();
         txtstatus = new javax.swing.JTextField();
         btnhapus = new javax.swing.JButton();
         btnedit = new javax.swing.JButton();
+        txtjenispaket = new javax.swing.JTextField();
+        txtcaripesanan = new javax.swing.JTextField();
+        btncaripesanan = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbpendataan = new javax.swing.JTable();
+        btnprintdata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -421,10 +437,6 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         jLabel12.setText("/ Kg");
 
-        cbjenispaket.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
-        cbjenispaket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Paket", "Paket A", "Paket B", "Paket C", "Paket D" }));
-        cbjenispaket.setPreferredSize(new java.awt.Dimension(433, 36));
-
         txtstatus.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
         txtstatus.setPreferredSize(new java.awt.Dimension(433, 36));
 
@@ -444,6 +456,51 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             }
         });
 
+        txtjenispaket.setFont(new java.awt.Font("Sylfaen", 0, 22)); // NOI18N
+        txtjenispaket.setPreferredSize(new java.awt.Dimension(433, 36));
+
+        txtcaripesanan.setPreferredSize(new java.awt.Dimension(899, 36));
+
+        btncaripesanan.setBackground(new java.awt.Color(253, 234, 127));
+        btncaripesanan.setText("CARI");
+        btncaripesanan.setPreferredSize(new java.awt.Dimension(151, 36));
+        btncaripesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncaripesananActionPerformed(evt);
+            }
+        });
+
+        tbpendataan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
+            }
+        ));
+        tbpendataan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpendataanMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbpendataan);
+
+        btnprintdata.setBackground(new java.awt.Color(253, 234, 127));
+        btnprintdata.setText("PRINT DATA");
+        btnprintdata.setPreferredSize(new java.awt.Dimension(151, 36));
+        btnprintdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprintdataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -451,21 +508,6 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btncari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 64, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,12 +520,18 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(265, 265, 265)
-                                        .addComponent(txtstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
+                                        .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnprintdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
+                                        .addGap(18, 18, 18)
                                         .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(178, 178, 178))
+                                .addGap(6, 6, 6))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -492,21 +540,35 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(134, 134, 134)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(cbjenispaket, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtnamapelanggan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtidpesanan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(174, 174, 174))))))
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtjenispaket, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtnamapelanggan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtidpesanan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(168, 168, 168))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btncari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtcaripesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btncaripesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
+                        .addGap(0, 64, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -516,9 +578,11 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
+                    .addComponent(txtcaripesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncaripesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtidpesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -529,7 +593,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbjenispaket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtjenispaket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -543,11 +607,16 @@ public class PengambilanAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnprintdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -710,7 +779,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             {
                 txtidpesanan.setText(rs.getString(1));
                 txtnamapelanggan.setText(rs.getString(2));
-                cbjenispaket.setSelectedItem(rs.getString(3));
+                txtjenispaket.setText(rs.getString(3));
                 txtjumlah.setText(rs.getString(4));
                 txttanggalambil.setText(rs.getString(5));
                 txtstatus.setText(rs.getString(6));
@@ -725,7 +794,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtidpesanan.setText("");
         txtnamapelanggan.setText("");
-        cbjenispaket.setSelectedItem("");
+        txtjenispaket.setText("");
         txtjumlah.setText("");
         txttanggalambil.setText("");
         txtstatus.setText("");
@@ -738,7 +807,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             String sql="insert into pengambilan values('"
             + txtidpesanan.getText()+"','"
             + txtnamapelanggan.getText()+"','"
-            + cbjenispaket.getSelectedItem()+"','"
+            + txtjenispaket.getText()+"','"
             + txtjumlah.getText()+"','"
             + txttanggalambil.getText()+"','"
             + txtstatus.getText()+"')";
@@ -748,6 +817,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             pst.execute();
             JOptionPane.showMessageDialog(null, "Berhasil disimpan");
             tampil_data();
+            tampil_pesanan();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Gagal disimpan");
@@ -765,6 +835,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null,"Data berhasil di hapus");
             tampil_data();
+            tampil_pesanan();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,"Proses Penghapusan Gagal");
@@ -777,7 +848,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         try{
             java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
             String sql="update pengambilan set nama_pelanggan ='"+ txtnamapelanggan.getText()
-            +"', jenis_paket ='"+ cbjenispaket.getSelectedItem()
+            +"', jenis_paket ='"+ txtjenispaket.getText()
             +"', jumlah ='"+ txtjumlah.getText()
             +"', tanggal_ambil ='"+ txttanggalambil.getText()
             +"', status ='"+ txtstatus.getText()
@@ -786,6 +857,7 @@ public class PengambilanAdmin extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data berhasil di Koreksi");
             tampil_data();
+            tampil_pesanan();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,"Proses Edit data Gagal");
@@ -798,11 +870,61 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         int tabel = tbpengambilan.getSelectedRow();
         txtidpesanan.setText(tbpengambilan.getValueAt(tabel, 0).toString());
         txtnamapelanggan.setText(tbpengambilan.getValueAt(tabel, 1).toString());
-        cbjenispaket.setSelectedItem(tbpengambilan.getValueAt(tabel, 2).toString());
+        txtjenispaket.setText(tbpengambilan.getValueAt(tabel, 2).toString());
         txtjumlah.setText(tbpengambilan.getValueAt(tabel, 3).toString());
         txttanggalambil.setText(tbpengambilan.getValueAt(tabel, 4).toString());
         txtstatus.setText(tbpengambilan.getValueAt(tabel, 5).toString());
     }//GEN-LAST:event_tbpengambilanMouseClicked
+
+    private void tbpendataanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpendataanMouseClicked
+        // TODO add your handling code here:
+        int tabel = tbpendataan.getSelectedRow();
+        txtidpesanan.setText(tbpendataan.getValueAt(tabel, 0).toString());
+        txtjenispaket.setText(tbpendataan.getValueAt(tabel, 5).toString());
+        txtjumlah.setText(tbpendataan.getValueAt(tabel, 6).toString());
+    }//GEN-LAST:event_tbpendataanMouseClicked
+
+    private void btncaripesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaripesananActionPerformed
+        // TODO add your handling code here:
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+
+            String sql = "Select * from pendataan where id_pesanan='"+txtcaripesanan.getText()+"' or nama_pelanggan='"+txtcaripesanan.getText()+"'";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next())
+            {
+                txtidpesanan.setText(rs.getString(1));
+                txtjenispaket.setText(rs.getString(6));
+                txtjumlah.setText(rs.getString(7));
+                JOptionPane.showMessageDialog(null,"Data pendataan : "
+                    + txtcaripesanan.getText() + " ditemukan, Apakah Anda Ingin Mengedit atau Menghapus?");
+            }
+        } catch (Exception e){}
+        txtcaripesanan.requestFocus();
+
+    }//GEN-LAST:event_btncaripesananActionPerformed
+
+    private void btnprintdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprintdataActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+        
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql = "select * from pengambilan";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/yundry/";
+            JasperDesign design = JRXmlLoader.load(dirr + "pengambilan.jrxml");
+            JasperReport report =JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint JPrint = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(JPrint, false);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnprintdataActionPerformed
 
     public void tampil_data(){
         DefaultTableModel tabel=new DefaultTableModel();
@@ -833,6 +955,43 @@ public class PengambilanAdmin extends javax.swing.JFrame {
         catch (Exception e){
         }
     }
+    
+    public void tampil_pesanan(){
+        DefaultTableModel tabel=new DefaultTableModel();
+        tabel.addColumn("ID PESANAN");
+        tabel.addColumn("NAMA KARYAWAN");
+        tabel.addColumn("NAMA PELANGGAN");
+        tabel.addColumn("TANGGAL PESANAN");
+        tabel.addColumn("RENCANA AMBIL");
+        tabel.addColumn("JENIS PAKET");
+        tabel.addColumn("JUMLAH");
+        tabel.addColumn("KETERANGAN");
+        tabel.addColumn("TOTAL BAYAR");
+
+        try {
+            java.sql.Connection conn = (java.sql.Connection)yundry.connection.getConnection();
+            String sql="select *from pendataan";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while (rs.next())
+            {
+            tabel.addRow(new Object[]{
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8),
+                rs.getString(9)});
+            }
+            tbpendataan.setModel(tabel);
+            }
+        catch (Exception e){
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -871,11 +1030,12 @@ public class PengambilanAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbatal;
     private javax.swing.JButton btncari;
+    private javax.swing.JButton btncaripesanan;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnhapus;
     private javax.swing.JButton btnlogout;
+    private javax.swing.JButton btnprintdata;
     private javax.swing.JButton btnsimpan;
-    private javax.swing.JComboBox<String> cbjenispaket;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -887,16 +1047,20 @@ public class PengambilanAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pberanda;
     private javax.swing.JPanel pkaryawan;
     private javax.swing.JPanel ppelanggan;
     private javax.swing.JPanel ppembayaran;
     private javax.swing.JPanel ppendataan;
     private javax.swing.JPanel ppengambilan;
+    private javax.swing.JTable tbpendataan;
     private javax.swing.JTable tbpengambilan;
     private javax.swing.JLabel txtberanda;
     private javax.swing.JTextField txtcari;
+    private javax.swing.JTextField txtcaripesanan;
     private javax.swing.JTextField txtidpesanan;
+    private javax.swing.JTextField txtjenispaket;
     private javax.swing.JTextField txtjumlah;
     private javax.swing.JLabel txtkaryawan;
     private javax.swing.JTextField txtnamapelanggan;
